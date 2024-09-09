@@ -3,10 +3,9 @@ from collections import deque
 import time
 
 estado_final = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 0]
+    [1, 2, 3],
+    [8, 0, 4],
+    [7, 6, 5],
 ]
 
 def busca_em_largura(estado_inicial):
@@ -17,7 +16,6 @@ def busca_em_largura(estado_inicial):
 
     while fronteira:
         estado_atual, movimento_anterior, nivel, caminho = fronteira.popleft()
-        max_fronteira = max(max_fronteira, len(fronteira))
         caminho_atualizado = caminho + [(estado_atual, movimento_anterior)]
         print_estado(estado_atual, nivel)
 
@@ -36,6 +34,9 @@ def busca_em_largura(estado_inicial):
         for sucessor, movimento in gerar_sucessores(estado_atual, movimento_anterior):
             if tuple(map(tuple, sucessor)) not in explorados:
                 fronteira.append((sucessor, movimento, nivel + 1, caminho_atualizado))
+            
+        max_fronteira = max(max_fronteira, len(fronteira))
+        
     
     fim = time.time()
     print(f"Tempo de execução: {fim - inicio:.4f} segundos")
@@ -43,10 +44,9 @@ def busca_em_largura(estado_inicial):
     return False
 
 estado_inicial = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 0, 10, 12],
-    [13, 14, 11, 15]
+    [8, 1, 3],
+    [7, 2, 4],
+    [6, 0, 5],
 ]
 
 busca_em_largura(estado_inicial)

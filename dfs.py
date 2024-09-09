@@ -3,8 +3,8 @@ import time
 
 estado_final = [
     [1, 2, 3],
-    [5, 6, 4],
-    [7, 8, 0]
+    [8, 0, 4],
+    [7, 6, 5],
 ]
 
 def dfs_com_limite(estado_atual, limite, nivel, caminho, movimento_anterior, explorados, fronteira, max_fronteira):
@@ -45,7 +45,6 @@ def busca_em_profundidade_com_limite(estado_inicial, limite):
         print("\nSolução encontrada!")
         print(f"Tempo de execução: {fim - inicio:.4f} segundos")
         print(f"Tamanho máximo da fronteira (memória): {max_fronteira[0]}")
-        print_caminho(caminho)
         return True
 
     fim = time.time()
@@ -53,10 +52,10 @@ def busca_em_profundidade_com_limite(estado_inicial, limite):
     return False
 
 estado_inicial = [
-    [1, 2, 3],
-    [5, 0, 4],
-    [7, 6, 8]
+    [8, 1, 3],
+    [7, 2, 4],
+    [6, 0, 5],
 ]
 
-limite_profundidade = 2
+limite_profundidade = 200
 busca_em_profundidade_com_limite(estado_inicial, limite_profundidade)

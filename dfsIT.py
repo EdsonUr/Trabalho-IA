@@ -3,12 +3,13 @@ import time
 
 estado_final = [
     [1, 2, 3],
-    [5, 6, 4],
-    [7, 8, 0]
+    [8, 0, 4],
+    [7, 6, 5],
 ]
 
 def dfs_limitado(estado_atual, limite, nivel, caminho, movimento_anterior, explorados, fronteira, max_fronteira):
     max_fronteira[0] = max(max_fronteira[0], len(fronteira))
+
     print("fronteira:", fronteira)
     print("fronteira len:", len(fronteira))
 
@@ -30,11 +31,12 @@ def dfs_limitado(estado_atual, limite, nivel, caminho, movimento_anterior, explo
             fronteira.pop()
             if encontrado:
                 return resultado, True
+    
 
     return None, False
 
 def busca_em_profundidade_iterativa(estado_inicial):
-    limite = 2
+    limite = 5
     inicio = time.time()
     max_fronteira = [0]
 
@@ -50,15 +52,16 @@ def busca_em_profundidade_iterativa(estado_inicial):
             print("\nSolução encontrada!")
             print(f"Tempo de execução: {fim - inicio:.4f} segundos")
             print(f"Tamanho máximo da fronteira (memória): {max_fronteira[0]}")
-            print_caminho(caminho)
+            print_caminho([(estado_inicial, 'None')] + caminho[1:])
             return True
 
         limite += 1
 
 estado_inicial = [
-    [1, 2, 3],
-    [5, 0, 4],
-    [7, 6, 8]
+    [8, 1, 3],
+    [7, 2, 4],
+    [6, 0, 5],
 ]
 
+print("Teste de Busca em Profundidade Iterativa")
 busca_em_profundidade_iterativa(estado_inicial)
