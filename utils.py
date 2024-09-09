@@ -10,6 +10,7 @@ def encontrar_zero(estado):
 def gerar_sucessores(estado, ultimo_movimento):
     sucessores = []
     i, j = encontrar_zero(estado)
+    n = len(estado)  # Define o tamanho do tabuleiro (3x3 ou 4x4)
     
     movimentos = [
         (-1, 0, 'cima', 'baixo'),    # Movendo para cima, oposto é baixo
@@ -21,7 +22,8 @@ def gerar_sucessores(estado, ultimo_movimento):
     for mov in movimentos:
         novo_i, novo_j = i + mov[0], j + mov[1]
         
-        if 0 <= novo_i < 3 and 0 <= novo_j < 3 and mov[3] != ultimo_movimento:
+        # Verifica se o novo movimento está dentro dos limites do tabuleiro
+        if 0 <= novo_i < n and 0 <= novo_j < n and mov[3] != ultimo_movimento:
             novo_estado = [linha[:] for linha in estado]
             novo_estado[i][j], novo_estado[novo_i][novo_j] = novo_estado[novo_i][novo_j], novo_estado[i][j]
             sucessores.append((novo_estado, mov[2]))

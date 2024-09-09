@@ -3,9 +3,10 @@ from collections import deque
 import time
 
 estado_final = [
-    [1, 2, 3],
-    [5, 6, 4],
-    [7, 8, 0]
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 0]
 ]
 
 def busca_em_largura(estado_inicial):
@@ -42,9 +43,10 @@ def busca_em_largura(estado_inicial):
     return False
 
 estado_inicial = [
-    [1, 2, 3],
-    [5, 0, 4],
-    [7, 6, 8]
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 0, 10, 12],
+    [13, 14, 11, 15]
 ]
 
 busca_em_largura(estado_inicial)
